@@ -1,0 +1,513 @@
+{
+    "package": "MicrosoftSpeakerRecognition",
+    "tagline": "MicrosoftSpeakerRecognition API",
+    "description": "Speaker Recognition APIs are cloud-based APIs that provide the most advanced algorithms for speaker verification and speaker identification. Speaker Recognition can be divided into two categories: speaker verification and speaker identification.",
+    "image": "https:\/\/logo.clearbit.com\/microsoft.com",
+    "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-MicrosoftSpeakerRecognition-Package",
+    "keywords": [
+        "API",
+        "recognition",
+        "microsoft",
+        "detection"
+    ],
+    "accounts": {
+        "domain": "microsoft.com",
+        "credentials": [
+            "subscriptionKey"
+        ]
+    },
+    "blocks": [
+        {
+            "name": "createIdentificationEnrollment",
+            "description": "Enrollment for speaker identification is text-independent, which means that there are no restrictions on what the speaker says in the audio. The speaker's voice is recorded, and a number of features are extracted to form a unique voiceprint.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "shortAudio",
+                    "type": "Select",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "info": "Instruct the service to waive the recommended minimum audio limit needed for enrollment. Set value to \u201ctrue\u201d to force enrollment using any audio length (min. 1 second).",
+                    "required": false
+                },
+                {
+                    "name": "identificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker identification profile. GUID returned from Identification Profile - Create Profile API.",
+                    "required": true
+                },
+                {
+                    "name": "file",
+                    "type": "File",
+                    "info": "The audio file format must meet the following requirements.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createIdentificationProfile",
+            "description": "Create a new speaker identification profile with specified locale. One subscription can only create 1000 speaker verification\/identification profiles at most.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "locale",
+                    "type": "Select",
+                    "options": [
+                        "en-US",
+                        "zh-CN"
+                    ],
+                    "info": "Locale for the language of this speaker identification profile. Must be: en-US or zh-CN",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteIdentificationProfile",
+            "description": "Deletes both speaker identification profile and all associated enrollments permanently from the service.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "identificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker identification profile. GUID returned from Identification Profile - Create Profile API",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllIdentificationProfiles",
+            "description": "Get all speaker identification profiles within the subscription.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleIdentificationProfile",
+            "description": "Get a speaker identification profile by identificationProfileId.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "identificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker identification profile. GUID returned from Identification Profile - Create Profile API",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteIdentificationProfileEnrollments",
+            "description": "Deletes all enrollments associated with the given speaker identification profile permanently from the service.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "identificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker identification profile. GUID returned from Identification Profile - Create Profile API",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getOperationStatus",
+            "description": "Get operation status or result.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "operationId",
+                    "type": "String",
+                    "info": "The operation Id, created by Speaker Recognition - Identification or Identification Profile - Create Enrollment.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSpeakerIdentification",
+            "description": "To automatically identify who is speaking given a group of speakers.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "identificationProfileIds",
+                    "type": "List",
+                    "info": "Comma-delimited identificationProfileIds, the id should be Guid. It can only support at most 10 profiles for one identification request.",
+                    "required": true,
+                    "structure": {
+                        "name": "id",
+                        "type": "String",
+                        "info": "Profile id."
+                    }
+                },
+                {
+                    "name": "shortAudio",
+                    "type": "Select",
+                    "options": [
+                        "true",
+                        "false"
+                    ],
+                    "info": "Instruct the service to waive the recommended minimum audio limit needed for identification. Set value to \u201ctrue\u201d to force identification using any audio length (min. 1 second).",
+                    "required": false
+                },
+                {
+                    "name": "file",
+                    "type": "File",
+                    "info": "The audio file format must meet the following requirements.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSpeakerVerification",
+            "description": "To automatically verify and authenticate users using their voice or speech.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "verificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker verification profile. It should be a GUID.",
+                    "required": true
+                },
+                {
+                    "name": "file",
+                    "type": "File",
+                    "info": "The audio file format must meet the following requirements.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllSupportedVerificationPhrases",
+            "description": "Returns the list of supported verification phrases.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "locale",
+                    "type": "String",
+                    "info": "Locale for the language when retrieving verification phrases..",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createVerificationEnrollment",
+            "description": "Enrollment for speaker verification is text-dependent, which means speaker need to choose a specific phrase to use in both enrollment and verification. List of supported phrases can be found in Verification Phrase - List All Supported Verification Phrases.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "verificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker verification profile. GUID returned from Verification Profile - Create Profile API",
+                    "required": true
+                },
+                {
+                    "name": "file",
+                    "type": "File",
+                    "info": "The audio file format must meet the following requirements.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "createVerificationProfile",
+            "description": "Create a new speaker verification profile with specific locale.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "locale",
+                    "type": "Select",
+                    "options": [
+                        "en-US"
+                    ],
+                    "info": "Locale for language of the new speaker verification profile. Must be: en-US",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteVerificationProfile",
+            "description": "Deletes both speaker verification profile and all associated enrollments permanently from the service.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "verificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker verification profile. It should be a GUID.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getAllVerificationProfiles",
+            "description": "Get all speaker verification profiles within the subscription.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getSingleVerificationProfile",
+            "description": "Get a speaker verification profile by verificationProfileId.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "verificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker verification profile. It should be a GUID.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "deleteVerificationProfileEnrollments",
+            "description": "Deletes all enrollments associated with the given speaker\u2019s verification profile permanently from the service.",
+            "args": [
+                {
+                    "name": "subscriptionKey",
+                    "type": "credentials",
+                    "info": "Subscription key which provides access to this API. Found in your Cognitive Services accounts.",
+                    "required": true
+                },
+                {
+                    "name": "verificationProfileId",
+                    "type": "String",
+                    "info": "ID of speaker verification profile. It should be a GUID.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        }
+    ]
+}
