@@ -9,6 +9,17 @@ Speaker Recognition APIs are cloud-based APIs that provide the most advanced alg
 1. Sign in [portal.azure.com](https://portal.azure.com).
 2. Add new API subscription.
 
+#####The audio file format must meet the following requirements:
+ 
+ |Param|value|
+ |---------|---|
+ |Container|wav|
+ |Encoding|PCM|
+ |Rate|16k|
+ |Sample Format|16 bit|
+ |Channels|Mono|
+
+
 ## Custom datatypes:
   |Datatype|Description|Example
   |--------|-----------|----------
@@ -24,7 +35,7 @@ Enrollment for speaker identification is text-independent, which means that ther
 | Field                  | Type       | Description
 |------------------------|------------|----------
 | subscriptionKey        | credentials| Subscription key which provides access to this API. Found in your Cognitive Services accounts.
-| shortAudio             | Select     | Instruct the service to waive the recommended minimum audio limit needed for enrollment. Set value to “true” to force enrollment using any audio length (min. 1 second).
+| shortAudio             | Boolean     | Instruct the service to waive the recommended minimum audio limit needed for enrollment. Set value to “true” to force enrollment using any audio length (min. 1 second).
 | identificationProfileId| String     | ID of speaker identification profile. GUID returned from Identification Profile - Create Profile API.
 | file                   | File       | The audio file format must meet the following requirements.
 
@@ -82,7 +93,7 @@ To automatically identify who is speaking given a group of speakers.
 |-------------------------|------------|----------
 | subscriptionKey         | credentials| Subscription key which provides access to this API. Found in your Cognitive Services accounts.
 | identificationProfileIds| List       | Comma-delimited identificationProfileIds, the id should be Guid. It can only support at most 10 profiles for one identification request.
-| shortAudio              | Select     | Instruct the service to waive the recommended minimum audio limit needed for identification. Set value to “true” to force identification using any audio length (min. 1 second).
+| shortAudio              | Boolean     | Instruct the service to waive the recommended minimum audio limit needed for identification. Set value to “true” to force identification using any audio length (min. 1 second).
 | file                    | File       | The audio file format must meet the following requirements.
 
 ## MicrosoftSpeakerRecognition.getSpeakerVerification
