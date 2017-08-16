@@ -33,7 +33,7 @@ $app->post('/api/MicrosoftSpeakerRecognition/deleteVerificationProfile', functio
             $result['callback'] = 'success';
             $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
             if(empty($result['contextWrites']['to'])) {
-                $result['contextWrites']['to']['status_msg'] = "Api return no results";
+                $result['contextWrites']['to']['status_msg'] = "Profile successfully deleted!";
             }
         } else {
             $result['callback'] = 'error';

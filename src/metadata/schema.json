@@ -16,7 +16,8 @@
       "subscriptionKey"
     ]
   },
-  "blocks": [{
+  "blocks": [
+    {
     "name": "createIdentificationEnrollment",
     "description": "Enrollment for speaker identification is text-independent, which means that there are no restrictions on what the speaker says in the audio. The speaker's voice is recorded, and a number of features are extracted to form a unique voiceprint.",
     "args": [{
@@ -351,7 +352,7 @@
         {
           "name": "locale",
           "type": "String",
-          "info": "Locale for the language when retrieving verification phrases..",
+          "info": "Locale for the language when retrieving verification phrases.",
           "required": true
         }
       ],

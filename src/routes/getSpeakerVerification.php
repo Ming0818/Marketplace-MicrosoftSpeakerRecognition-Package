@@ -25,13 +25,21 @@ $app->post('/api/MicrosoftSpeakerRecognition/getSpeakerVerification', function (
     $requestParams['headers'] = ["Ocp-Apim-Subscription-Key"=>"{$data['subscriptionKey']}"];
     $requestParams['query'] = $requestBody;
 
+    $requestParams['multipart'] = [
+        [
+            'name'     => 'file',
+            'contents' => fopen($post_data['args']['file'], 'r')
+        ]
+    ];
+
     try {
         $resp = $client->post($query_str, $requestParams);
         $responseBody = $resp->getBody()->getContents();
 
         if(in_array($resp->getStatusCode(), ['200', '201', '202', '203', '204'])) {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
+            $result['contextWrites']['to'] = $resp->getHeader('Operation-Location');
+
             if(empty($result['contextWrites']['to'])) {
                 $result['contextWrites']['to']['status_msg'] = "Api return no results";
             }
