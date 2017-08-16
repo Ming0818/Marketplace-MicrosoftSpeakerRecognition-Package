@@ -9,7 +9,7 @@ Speaker Recognition APIs are cloud-based APIs that provide the most advanced alg
 1. Sign in [portal.azure.com](https://portal.azure.com).
 2. Add new API subscription.
 
-#####The audio file format must meet the following requirements:
+##### The audio file format must meet the following requirements:
  
  |Param|value|
  |---------|---|
