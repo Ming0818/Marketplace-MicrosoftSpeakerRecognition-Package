@@ -27,6 +27,7 @@ $app->post('/api/MicrosoftSpeakerRecognition/createIdentificationEnrollment', fu
     $requestParams['multipart'] = [
         [
             'name'     => 'file',
+            'filename' => 'filename',
             'contents' => fopen($post_data['args']['file'], 'r')
         ]
     ];
