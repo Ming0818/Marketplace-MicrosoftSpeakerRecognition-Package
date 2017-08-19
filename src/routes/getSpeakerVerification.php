@@ -33,7 +33,7 @@ $app->post('/api/MicrosoftSpeakerRecognition/getSpeakerVerification', function (
     ];
 
     try {
-        $resp = $client->post($query_str, $requestParams);
+        $resp = $client->get($query_str, $requestParams);
         $responseBody = $resp->getBody()->getContents();
 
         if(in_array($resp->getStatusCode(), ['200', '201', '202', '203', '204'])) {

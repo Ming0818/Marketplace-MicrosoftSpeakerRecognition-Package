@@ -325,7 +325,7 @@
       ],
       "url": "https://westus.api.cognitive.microsoft.com/spid/v1.0/verify",
       "request": {
-        "method": "post",
+        "method": "get",
         "paramsType": "query",
         "bodyParams": ["verificationProfileId"],
         "headers": {
