@@ -20,10 +20,9 @@ $app->post('/api/MicrosoftSpeakerRecognition/getSpeakerVerification', function (
     $requestBody = \Models\Params::createRequestBody($data, $bodyParams);
 
     $client = $this->httpClient;
-    $query_str = "https://westus.api.cognitive.microsoft.com/spid/v1.0/verify";
+    $query_str = "https://westus.api.cognitive.microsoft.com/spid/v1.0/verify?verificationProfileId={$data['verificationProfileId']}";
 
     $requestParams['headers'] = ["Ocp-Apim-Subscription-Key"=>"{$data['subscriptionKey']}"];
-    $requestParams['query'] = $requestBody;
 
     $requestParams['multipart'] = [
         [
@@ -33,7 +32,7 @@ $app->post('/api/MicrosoftSpeakerRecognition/getSpeakerVerification', function (
     ];
 
     try {
-        $resp = $client->get($query_str, $requestParams);
+        $resp = $client->post($query_str, $requestParams);
         $responseBody = $resp->getBody()->getContents();
 
         if(in_array($resp->getStatusCode(), ['200', '201', '202', '203', '204'])) {
